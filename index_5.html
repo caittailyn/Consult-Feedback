@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Health Co Consult Feedback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#34322c; --soft:#6c6660; --faint:#9d978c; --line:#d7d2c6;
+    --cream:#faf8f3; --paper:#fffdf8; --green:#8a9a78; --green-deep:#5c6b4c;
+    --green-wash:#eef0e7; --rule:#cfcabf;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'EB Garamond',serif; background:var(--cream); color:var(--ink);
+    font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
+    padding:48px 20px;
+  }
+  .sheet{
+    max-width:680px; margin:0 auto; background:var(--paper);
+    border:0.5px solid var(--line); padding:0;
+  }
+  .masthead{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:26px 44px; border-bottom:0.5px solid var(--rule);
+  }
+  .masthead .series, .masthead .no{
+    font-family:'Montserrat',sans-serif; font-weight:400; text-transform:uppercase;
+    letter-spacing:0.3em; font-size:9px; color:var(--faint);
+  }
+  .masthead .brand{
+    font-family:'Montserrat',sans-serif; font-weight:400; text-transform:uppercase;
+    letter-spacing:0.4em; font-size:13px; color:var(--ink); padding-left:0.4em;
+  }
+  .hero{ padding:46px 44px 30px; text-align:center; border-bottom:0.5px solid var(--rule);}
+  .hero .kick{
+    font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:0.22em;
+    font-size:11px; color:var(--green-deep); margin-bottom:14px;
+  }
+  .hero h1{
+    font-family:'Montserrat',sans-serif; font-weight:200; text-transform:uppercase;
+    letter-spacing:0.16em; font-size:34px; color:var(--ink); line-height:1.1;
+  }
+  .hero p{
+    font-style:italic; font-size:18px; color:var(--green-deep); margin-top:14px;
+    max-width:480px; margin-left:auto; margin-right:auto;
+  }
+  .body{ padding:36px 44px 44px;}
+  .intro{ font-size:17px; color:var(--soft); margin-bottom:26px; line-height:1.75;}
+  .section-label{
+    display:flex; align-items:baseline; gap:14px;
+    border-bottom:0.5px solid var(--rule); padding-bottom:8px; margin:34px 0 22px;
+  }
+  .section-label .rn{ font-style:italic; font-size:18px; color:var(--green);}
+  .section-label .tt{
+    font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:0.24em;
+    font-size:12px; color:var(--ink);
+  }
+  .field{ margin-bottom:22px;}
+  .field > label{
+    display:block; font-style:italic; font-size:17px; color:var(--ink); margin-bottom:9px;
+  }
+  .field .hint{ font-size:13px; color:var(--faint); font-style:normal; margin-left:6px;}
+  input[type=text], input[type=email], input[type=tel], input[type=url], textarea, select{
+    width:100%; font-family:'EB Garamond',serif; font-size:16px; color:var(--ink);
+    background:var(--cream); border:0.5px solid var(--line); border-radius:0;
+    padding:11px 14px; outline:none; transition:border-color .15s, background .15s;
+  }
+  input:focus, textarea:focus, select:focus{ border-color:var(--green); background:#fff;}
+  textarea{ resize:vertical; min-height:84px; line-height:1.6;}
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .chips{ display:flex; flex-wrap:wrap; gap:9px;}
+  .chip{
+    font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--soft); background:var(--cream);
+    border:0.5px solid var(--line); padding:9px 15px; cursor:pointer; user-select:none;
+    transition:all .15s;
+  }
+  .chip:hover{ border-color:var(--green);}
+  .chip.on{ background:var(--green); color:#fbfcf8; border-color:var(--green);}
+  .scale{ display:flex; gap:8px; flex-wrap:nowrap;}
+  .scale .opt{
+    flex:1; min-width:0; text-align:center; font-family:'Montserrat',sans-serif;
+    font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--soft);
+    background:var(--cream); border:0.5px solid var(--line); padding:14px 6px; cursor:pointer;
+    transition:all .15s;
+  }
+  .scale .opt:hover{ border-color:var(--green);}
+  .scale .opt.on{ background:var(--green); color:#fbfcf8; border-color:var(--green);}
+  .scale-ends{
+    display:flex; justify-content:space-between; margin-top:7px;
+    font-size:12px; font-style:italic; color:var(--faint);
+  }
+  .note{
+    background:var(--green-wash); border:0.5px solid var(--green); padding:18px 20px;
+    margin:30px 0 26px; font-style:italic; font-size:15px; color:var(--green-deep); line-height:1.65;
+  }
+  .submit-row{ text-align:center; margin-top:30px;}
+  button.send{
+    font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:0.24em;
+    font-size:12px; color:#fbfcf8; background:var(--green); border:none; border-radius:0;
+    padding:16px 46px; cursor:pointer; transition:background .15s;
+  }
+  button.send:hover{ background:var(--green-deep);}
+  button.send:disabled{ opacity:0.6; cursor:default;}
+  .footer{
+    text-align:center; padding:22px 44px; border-top:0.5px solid var(--rule);
+    font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:0.28em;
+    font-size:9px; color:var(--faint);
+  }
+  .thanks{ display:none; padding:70px 44px; text-align:center;}
+  .thanks h2{
+    font-family:'Montserrat',sans-serif; font-weight:200; text-transform:uppercase;
+    letter-spacing:0.2em; font-size:26px; color:var(--ink); margin-bottom:16px;
+  }
+  .thanks p{ font-style:italic; font-size:18px; color:var(--green-deep); max-width:440px; margin:0 auto;}
+  @media(max-width:560px){
+    .masthead,.hero,.body,.footer{padding-left:24px;padding-right:24px;}
+    .two{grid-template-columns:1fr;}
+    .hero h1{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet" id="sheet">
+  <div class="masthead">
+    <span class="series">Post-Consult</span>
+    <span class="brand">The Health Co</span>
+    <span class="no">Feedback</span>
+  </div>
+
+  <div class="hero">
+    <div class="kick">After We Meet</div>
+    <h1>The Consult<br>Feedback</h1>
+    <p>A few honest reflections so we can keep raising the bar for you and the leaders we work with.</p>
+  </div>
+
+  <div class="body" id="formBody">
+    <p class="intro">Your feedback shapes how we show up for every client. There are no wrong answers here, and honesty helps us most. It should take just a few minutes.</p>
+
+    <div class="note">This form is completely anonymous. We don't ask for your name, email, or any identifying details, so please feel free to be fully honest. Your candor is what helps us improve.</div>
+
+    <div class="section-label"><span class="rn">1</span><span class="tt">Your Overall Experience</span></div>
+    <div class="field">
+      <label>How would you rate your consult overall?</label>
+      <div class="scale" data-group="overall">
+        <span class="opt">1</span><span class="opt">2</span><span class="opt">3</span><span class="opt">4</span><span class="opt">5</span>
+      </div>
+      <div class="scale-ends"><span>Fell short</span><span>Exceeded expectations</span></div>
+    </div>
+    <div class="field">
+      <label>How likely are you to recommend The Health Co. to a colleague or friend?</label>
+      <div class="scale" data-group="nps">
+        <span class="opt">1</span><span class="opt">2</span><span class="opt">3</span><span class="opt">4</span><span class="opt">5</span>
+      </div>
+      <div class="scale-ends"><span>Not likely</span><span>Absolutely</span></div>
+    </div>
+
+    <div class="section-label"><span class="rn">2</span><span class="tt">The Value Delivered</span></div>
+    <div class="field">
+      <label>Did the consult give you clarity you didn't have before?</label>
+      <div class="chips" data-group="clarity">
+        <span class="chip">Yes, a lot</span><span class="chip">Somewhat</span>
+        <span class="chip">Not really</span><span class="chip">Too soon to tell</span>
+      </div>
+    </div>
+    <div class="field">
+      <label>What was the single most valuable part of our conversation?</label>
+      <textarea id="mostValuable" placeholder="The insight, moment, or takeaway that stood out most."></textarea>
+    </div>
+    <div class="field">
+      <label>Was there anything you hoped to cover that we didn't get to?</label>
+      <textarea id="missed" placeholder="Anything left unanswered, or a thread you'd like to pick back up."></textarea>
+    </div>
+
+    <div class="section-label"><span class="rn">3</span><span class="tt">Clarity &amp; Next Steps</span></div>
+    <div class="field">
+      <label>How clear are you on the next steps coming out of the call?</label>
+      <div class="chips" data-group="nextClarity">
+        <span class="chip">Completely clear</span><span class="chip">Mostly clear</span>
+        <span class="chip">A little unsure</span><span class="chip">Need a recap</span>
+      </div>
+    </div>
+    <div class="field">
+      <label>How are you feeling about working together going forward?</label>
+      <div class="chips" data-group="forward">
+        <span class="chip">Ready to move ahead</span><span class="chip">Interested, need details</span>
+        <span class="chip">Still considering</span><span class="chip">Not the right fit</span>
+      </div>
+    </div>
+
+    <div class="section-label"><span class="rn">4</span><span class="tt">Help Us Improve</span></div>
+    <div class="field">
+      <label>What's one thing we could have done better?</label>
+      <textarea id="improve" placeholder="Be honest — this is the most useful feedback you can give us."></textarea>
+    </div>
+    <div class="field">
+      <label>How did the experience compare to what you expected?</label>
+      <textarea id="expectation" placeholder="Better, worse, or different than you imagined — and how."></textarea>
+    </div>
+
+    <div class="section-label"><span class="rn">5</span><span class="tt">Anything Else</span></div>
+    <div class="field">
+      <label>Anything else you'd like us to know?</label>
+      <textarea id="extra" placeholder="The floor is yours."></textarea>
+    </div>
+
+    <div class="submit-row">
+      <button class="send" id="sendBtn">Send Feedback</button>
+    </div>
+  </div>
+
+  <div class="thanks" id="thanks">
+    <h2>Thank You</h2>
+    <p>We're grateful you took the time. Your honesty genuinely shapes how we work — and we've read every word.</p>
+  </div>
+
+  <div class="footer">The Health Co &nbsp;&middot;&nbsp; Strategy for leaders who show up</div>
+</div>
+
+<script>
+  // ============================================================
+  //  CONNECTED to Google Apps Script (feedback — separate sheet).
+  //  Paste the feedback form's Apps Script Web App URL below.
+  //  This must be a DIFFERENT deployment than the intake form,
+  //  bound to its own feedback Google Sheet.
+  // ============================================================
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbycMEBM14zIegEA2aOzSWhuXLU84fYEi6rh7JJIEtsi_qkaKdAPRXgmTchvvCCBqtIc/exec";
+
+  document.querySelectorAll('.chip').forEach(c=>{
+    c.addEventListener('click',()=>c.classList.toggle('on'));
+  });
+  document.querySelectorAll('.scale').forEach(s=>{
+    s.querySelectorAll('.opt').forEach(o=>{
+      o.addEventListener('click',()=>{
+        s.querySelectorAll('.opt').forEach(x=>x.classList.remove('on'));
+        o.classList.add('on');
+      });
+    });
+  });
+
+  function collect(){
+    const val = id => (document.getElementById(id)?.value || "").trim();
+    const chosen = group => Array.from(
+      document.querySelectorAll('[data-group="'+group+'"] .chip.on, [data-group="'+group+'"] .opt.on')
+    ).map(el => el.textContent.trim()).join(", ");
+    return {
+      "Overall rating (1-5)": chosen('overall'),
+      "Would recommend (1-5)": chosen('nps'),
+      "Gained clarity": chosen('clarity'),
+      "Most valuable part": val('mostValuable'),
+      "Not covered / missed": val('missed'),
+      "Clarity on next steps": chosen('nextClarity'),
+      "Feeling about moving forward": chosen('forward'),
+      "What we could improve": val('improve'),
+      "Vs. expectations": val('expectation'),
+      "Anything else": val('extra')
+    };
+  }
+
+  const btn = document.getElementById('sendBtn');
+
+  function showThanks(){
+    document.getElementById('formBody').style.display='none';
+    document.getElementById('thanks').style.display='block';
+    document.getElementById('sheet').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function showError(msg){
+    let e = document.getElementById('formErr');
+    if(!e){
+      e = document.createElement('div');
+      e.id = 'formErr';
+      e.style.cssText = "color:#9c3a3a;font-style:italic;font-size:14px;text-align:center;margin-top:14px;";
+      document.querySelector('.submit-row').appendChild(e);
+    }
+    e.textContent = msg;
+  }
+
+  btn.addEventListener('click', async ()=>{
+    const data = collect();
+    if(ENDPOINT.includes("PASTE_YOUR")){
+      showError("Almost ready! Add your feedback Apps Script Web App URL in the code to start collecting responses.");
+      setTimeout(showThanks, 1400);
+      return;
+    }
+    btn.disabled = true;
+    const original = btn.textContent;
+    btn.textContent = "Sending…";
+    showError("");
+    try{
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(data)
+      });
+      if(res.ok){ showThanks(); }
+      else{
+        btn.disabled = false; btn.textContent = original;
+        showError("Something went wrong sending that. Please try once more, or email us directly.");
+      }
+    }catch(err){
+      btn.disabled = false; btn.textContent = original;
+      showError("Looks like a connection hiccup. Please try again in a moment.");
+    }
+  });
+</script>
+</body>
+</html>
